@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>现场互动抽奖台</title>
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body>
+    <div class="app-shell" data-theme="coral">
+      <header class="topbar">
+        <div class="brand">
+          <span class="brand-mark">奖</span>
+          <div>
+            <strong>现场互动抽奖台</strong>
+            <span id="statusText">名单 24 人</span>
+          </div>
+        </div>
+
+        <label class="title-editor">
+          <span>活动</span>
+          <input id="eventTitle" value="年会幸运抽奖" autocomplete="off" />
+        </label>
+
+        <nav class="mode-tabs" aria-label="模式">
+          <button class="tab is-active" data-mode="lottery">抽奖</button>
+          <button class="tab" data-mode="wheel">转盘</button>
+          <button class="tab" data-mode="rollcall">点名</button>
+          <button class="tab" data-mode="task">任务</button>
+        </nav>
+
+        <div class="top-actions">
+          <button class="icon-button" id="fullscreenBtn" title="全屏">⛶</button>
+          <button class="icon-button" id="resetBtn" title="重置">↺</button>
+        </div>
+      </header>
+
+      <main class="workspace">
+        <section class="stage" aria-live="polite">
+          <div class="stage-head">
+            <span id="eventLabel">年会幸运抽奖</span>
+            <span id="modeLabel">幸运抽奖</span>
+          </div>
+
+          <div class="stage-center">
+            <canvas id="wheelCanvas" width="620" height="620" aria-label="转盘"></canvas>
+
+            <div class="winner-panel" id="winnerPanel">
+              <span class="panel-kicker" id="panelKicker">本轮奖项</span>
+              <strong id="mainResult">一等奖</strong>
+              <span id="subResult">点击开始抽取</span>
+            </div>
+
+            <div class="name-reel" id="nameReel">
+              <span>王小米</span>
+              <span>陈老师</span>
+              <span>李明</span>
+              <span>赵一凡</span>
+            </div>
+          </div>
+
+          <div class="stage-footer">
+            <button class="primary-action" id="startBtn">开始抽取</button>
+            <button class="secondary-action" id="copyBtn">复制结果</button>
+          </div>
+
+          <div class="confetti-layer" id="confettiLayer" aria-hidden="true"></div>
+        </section>
+
+        <aside class="control-panel">
+          <section class="panel-section">
+            <div class="section-title">
+              <strong>名单</strong>
+              <span id="nameCount">24</span>
+            </div>
+            <textarea id="namesInput" spellcheck="false"></textarea>
+          </section>
+
+          <section class="panel-section">
+            <div class="section-title">
+              <strong>奖项 / 转盘项</strong>
+              <span id="optionCount">6</span>
+            </div>
+            <textarea id="optionsInput" spellcheck="false"></textarea>
+          </section>
+
+          <section class="panel-section">
+            <div class="section-title">
+              <strong>主题</strong>
+              <span id="themeName">珊瑚红</span>
+            </div>
+            <div class="theme-grid" id="themeGrid">
+              <button class="swatch is-active" data-theme="coral" title="珊瑚红"></button>
+              <button class="swatch" data-theme="teal" title="青绿色"></button>
+              <button class="swatch" data-theme="gold" title="金色"></button>
+              <button class="swatch" data-theme="ink" title="深色"></button>
+            </div>
+          </section>
+
+          <section class="panel-section history-section">
+            <div class="section-title">
+              <strong>结果</strong>
+              <span id="historyCount">0</span>
+            </div>
+            <ol id="historyList" class="history-list"></ol>
+          </section>
+        </aside>
+      </main>
+    </div>
+
+    <script src="./app.js"></script>
+  </body>
+</html>
